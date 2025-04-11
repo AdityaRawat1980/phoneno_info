@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Number Information</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body background="photo.jpg">
+    <div class="container">
+        <h1>Phone Number Information</h1>
+        <form method="POST">
+            <label for="phone_number">Enter Phone Number:</label>
+            <input type="text" id="phone_number" name="phone_number" required>
+            <button type="submit">Get Information</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% elif number %}
+            <h2>Results for {{ number }}</h2>
+            <p><strong>Time Zones:</strong> {{ timeZones }}</p>
+            <p><strong>Geolocation:</strong> {{ geolocation }}</p>
+            <p><strong>Region Code:</strong> {{ region_code }}</p>
+            <p><strong>Service Provider:</strong> {{ service }}</p>
+            <p><strong>Latitude:</strong> {{ latitude }}</p>
+            <p><strong>Longitude:</strong> {{ longitude }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
